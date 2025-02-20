@@ -1,10 +1,18 @@
-/*
 module alu (
-
+    input wire [2:0] alu_opcode,
+    input wire [7:0] operand,
+    input wire [7:0] acc_in,
+    output reg [7:0] acc_out
 );
+    always @(*) begin
+        case (alu_opcode)
+            3'b011: acc_out = acc_in + operand;
+            3'b100: acc_out = acc_in - operand;
+            default: acc_out = acc_in;
+        endcase
+    end
 endmodule
-*/
-
+/*
 module demux_2to4 (
     input wire in,
     input wire [1:0] sel,
@@ -21,3 +29,4 @@ module demux_2to4 (
         endcase
     end
 endmodule
+*/
